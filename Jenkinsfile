@@ -2,17 +2,18 @@ pipeline {
     agent any
 
     stages {
+        
         stage('Checkout') {
             steps {
-                
-                checkout scm
+                echo "Code checked out successfully."
             }
         }
 
         stage('Build') {
             steps {
                 echo "Compiling application..."
-                sh 'python3 -m py_compile app.py'
+                
+                bat 'python -m py_compile app.py'
                 
                 echo "Simulating a 20-second compile wait time..."
                 sleep 20
